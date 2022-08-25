@@ -5,13 +5,13 @@ from flask import Flask
 app = Flask(__name__)
 
 def init_unix_connection_engine(db_config):
-    db_user = os.environ["DB_USER"]
-    db_pass = os.environ["DB_PASS"]
-    db_name = os.environ["DB_NAME"]
+    db_user = os.environ["test"]
+    db_pass = os.environ["mochilas"]
+    db_name = os.environ["test"]
     
     db_socket_dir = os.environ.get("DB_SOCKET_DIR", "/cloudsql")
     
-    cloud_sql_connection_name = os.environ["CLOUD_SQL_CONNECTION_NAME"]
+    cloud_sql_connection_name = os.environ["rich-principle-352817:us-east1:test"]
     
     pool = sqlalchemy.create_engine(
         sqlalchemy.engine.url.URL(
