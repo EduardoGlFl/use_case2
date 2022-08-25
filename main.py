@@ -9,7 +9,7 @@ def init_unix_connection_engine(db_config):
     db_pass = os.environ["mochilas"]
     db_name = os.environ["test"]
     
-    db_socket_dir = os.environ.get("DB_SOCKET_DIR", "/cloudsql")
+    # db_socket_dir = os.environ.get("DB_SOCKET_DIR", "/cloudsql")
     
     cloud_sql_connection_name = os.environ["rich-principle-352817:us-east1:test"]
     
@@ -19,9 +19,7 @@ def init_unix_connection_engine(db_config):
             username=db_user, 
             password=db_pass, 
             database=db_name,
-            query={"unix_sock": "{}/{}/.s.PGSQL.5432".format(
-                db_socket_dir,
-                cloud_sql_connection_name)
+            query={"unix_sock": "{}/{}/.s.PGSQL.5432".format(cloud_sql_connection_name)
             }
         ),
         **db_config
